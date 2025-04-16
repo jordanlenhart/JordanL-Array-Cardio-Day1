@@ -38,6 +38,43 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    // PARAMETERS: 
+    // RESULTS:
+    // EXAMPLES:
+    // PSEUDOCODE:
+
+    // Array.prototype.map()
+    // 2. Give us an array of the inventors first and last names
+
+    // Array.prototype.sort()
+    // 3. Sort the inventors by birthdate, oldest to youngest
+
+    // Array.prototype.reduce()
+    // 4. How many years did all the inventors live all together?
+
+    // 5. Sort the inventors by years lived
+
+    // 7. sort Exercise
+    // Sort the people alphabetically by last name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Array.prototype.filter()
+    // 1. Filter the list of inventors for those who were born in the 1500's
     const fifteenHundreds = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600))
     console.table(fifteenHundreds);
 
@@ -50,8 +87,21 @@
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-    const orderedList = inventors.sort((firstPerson, secondPerson) => firstPerson.year > secondPerson.year ? 1 : 1);
-    console.table(orderedList)
+
+    /* 
+    PARAMETERS: list of inventors: year, first and last name
+    RESULTS: store a new array in variable, new array sorted from least year to greatest.
+    EXAMPLES: [..., { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 }, { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 }, { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 }]
+    PSEUDOCODE: 
+    create function using .sort to loop thru the inventors array comparing the inventors using inventorA year < inventorB year. 
+    the inventor with a smaller year will be given a smaller index by returning -1, whereas the greater year returns 1. 
+    Store this function in a variable and console.table it
+    */
+
+    console.log("This");
+    const orderedList = inventors.sort((firstPerson, secondPerson) => firstPerson.year < secondPerson.year ? -1 : 1);
+    console.table(orderedList);
+
 
 
     // Array.prototype.reduce()
@@ -64,6 +114,10 @@
 
 
     // 5. Sort the inventors by years lived
+    /* PSUEDOCODE
+    loop through the inventors array using .sort(), calculating the age of each inventor by subtracting their passed property by the year property.
+    compare the age of each inventor using last > next, returning a -1 for the smaller value and 1 for the greater value. this loops until all inventors are sorted by years lived, greatest to least.
+    */
     const eldest = inventors.sort(function(a, b) {
       const lastDude = a.passed - a.year;
       const nextDude = b.passed - b.year;
@@ -81,6 +135,11 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    /*
+    loop through the people array using .sort, and compare each people with the structure of 'last name, first name.' 
+    first, create 2 variables for [last property, first property] and use .split to add a ',' between last name and first name for the new array. then, compare the variables to each other, giving a value of -1 for the object "greater" or earliest in alphabetical order, then 1 for the object further along in alphabetical order.  loop through the list until all people are listed in alphabetical order.
+    console log the function
+    */
     const peopleOrder = people.sort((lastPerson, nextPerson) => {
       const [aLast, aFirst] = lastPerson.split(', ')
       const [bLast, bFirst] = nextPerson.split(', ')
